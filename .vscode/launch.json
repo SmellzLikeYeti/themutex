@@ -9,14 +9,14 @@
       "request": "launch",
       "name": "User Service",
       "program": "${workspaceFolder}/user-service/src/main.ts",
-      "outFiles": ["${workspaceFolder}/user-service/dist/**/*.js"]
+      "outFiles": ["${workspaceFolder}/dist/user-service/**/*.js"]
     },
     {
       "type": "node",
       "request": "launch",
       "name": "Auth Service",
       "program": "${workspaceFolder}/auth-service/src/main.ts",
-      "outFiles": ["${workspaceFolder}/auth-service/dist/**/*.js"]
+      "outFiles": ["${workspaceFolder}/dist/auth-service/**/*.js"]
     }
   ]
 }

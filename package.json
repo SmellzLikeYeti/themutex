@@ -1,12 +1,14 @@
 {
-  "name": "auth-service",
+  "name": "themutex",
   "version": "0.0.0",
   "description": "description",
   "author": "",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.build.json",
-    "start": "ts-node -r tsconfig-paths/register src/main.ts",
+    "build-user-service": "rm -rf user-service/dist && tsc -p tsconfig.build.json",
+    "start-user-service": "ts-node -r tsconfig-paths/register user-service/src/main.ts",
+    "build-auth-service": "rm -rf auth-service/dist && tsc -p tsconfig.build.json",
+    "start-auth-service": "ts-node -r tsconfig-paths/register auth-service/src/main.ts",
     "deploy-dev": "npm run build && sls deploy --stage dev",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start:dev": "nodemon",
