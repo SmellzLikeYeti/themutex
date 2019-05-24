@@ -1,0 +1,7 @@
+type Auth {
+  isUser: Boolean
+}
+
+type Query {
+  authenticate(password: String!, hash: String!): Boolean
+}

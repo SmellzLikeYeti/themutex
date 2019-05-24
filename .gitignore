@@ -1,0 +1,8 @@
+auth-service/node_modules/
+user-service/node_modules/
+user-service/package-lock.json
+auth-service/package-lock.json
+.serverless/
+auth-service/dist/
+user-service/dist/
+.dynamodb
