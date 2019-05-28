@@ -1,22 +1,22 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpService } from '@nestjs/common';
 import * as AWS from 'aws-sdk';
-import * as bcrypt from 'bcrypt';
-import { User } from 'src/graphql.schema';
+import { User } from '../graphql.schema';
+import bcrypt from 'bcryptjs';
 
 @Injectable()
 export class UserService {
   private docClient: AWS.DynamoDB.DocumentClient;
 
-  constructor() {
+  constructor(private http: HttpService) {
     this.docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1' });
   }
 
-  findOneByUsername(username: string): Promise<User> {
+  findOneByUsername(userid: string): Promise<User> {
     return new Promise((resolve, reject) => {
       const params = {
-        TableName: 'users',
+        TableName: 'user',
         Key: {
-          username,
+          userid,
         },
       };
 
@@ -25,8 +25,7 @@ export class UserService {
           reject(err);
         } else {
           resolve({
-            username: data.Item.username,
-            password: data.Item.password,
+            userid: data.Item.userid,
             email: data.Item.email,
           });
         }
@@ -34,38 +33,62 @@ export class UserService {
     });
   }
 
-  create(username: string, password: string, email: string): Promise<User> {
+  create(userid: string, password: string, email: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
       // Hash the password so we aren't being dumb
-      this.hashPassword(password).then(hashedPassword => {
-        const params = {
-          TableName: 'users',
-          Item: {
-            username,
-            password: hashedPassword,
-            email,
-          },
-          ConditionExpression: 'attribute_not_exists(username)',
-        };
+      this.handleUserAuthentication(userid, password)
+        .then(() => {
+          // Store the non sensitive user data
+          const params = {
+            TableName: 'user',
+            Item: {
+              userid,
+              email,
+            },
+            ConditionExpression: 'attribute_not_exists(userid)',
+          };
 
-        this.docClient.put(params, (err, data) => {
-          if (err) {
-            reject(undefined);
-          } else {
-            resolve();
-          }
+          this.docClient.put(params, (err, data) => {
+            if (err) {
+              reject(false);
+            } else {
+              resolve(true);
+            }
+          });
+        })
+        .catch(err => {
+          reject(false);
         });
-      });
     });
   }
 
-  private hashPassword(password: string): Promise<string> {
+  // Update to send to the auth-service for storage
+  private handleUserAuthentication(
+    userid: string,
+    password: string,
+  ): Promise<string> {
     return new Promise((resolve, reject) => {
+      const lambda = new AWS.Lambda({ region: 'us-east-1' });
+      // Hash the raw password before we invoke the auth function to save it
       bcrypt.hash(password, 10, (err, hash) => {
         if (err) {
           reject(err);
         } else {
-          resolve(hash);
+          this.http
+            .post(
+              'https://6ouckl5see.execute-api.us-east-1.amazonaws.com/dev/graphql',
+              {
+                query: `mutation {createAuthentication(userid: \"${userid}\", hash: \"${hash}\")}`,
+              },
+            )
+            .subscribe(
+              res => {
+                resolve(res.data);
+              },
+              e => {
+                reject(e);
+              },
+            );
         }
       });
     });

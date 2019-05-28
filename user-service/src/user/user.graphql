@@ -1,18 +1,12 @@
 type User {
-  username: String!
-  password: String
-  email: String
-}
-
-type Profile {
-  fName: String
-  lName: String
+  userid: String!
+  email: String!
 }
 
 type Query {
-  user(username: String!): User
+  user(userid: String!): User
 }
 
 type Mutation {
-  createUser(username: String!, password: String!, email: String!): User
+  createUser(userid: String!, password: String!, email: String!): Boolean
 }

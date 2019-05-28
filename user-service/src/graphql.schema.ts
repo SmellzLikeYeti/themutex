@@ -6,20 +6,14 @@
 
 /* tslint:disable */
 export abstract class IMutation {
-    abstract createUser(username: string, password: string, email: string): User | Promise<User>;
-}
-
-export class Profile {
-    fName?: string;
-    lName?: string;
+    abstract createUser(userid: string, password: string, email: string): boolean | Promise<boolean>;
 }
 
 export abstract class IQuery {
-    abstract user(username: string): User | Promise<User>;
+    abstract user(userid: string): User | Promise<User>;
 }
 
 export class User {
-    username: string;
-    password?: string;
-    email?: string;
+    userid: string;
+    email: string;
 }

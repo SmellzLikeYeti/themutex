@@ -1,7 +1,14 @@
 type Auth {
-  isUser: Boolean
+  userid: String!
+  hash: String!
+  lastSession: String!
 }
 
 type Query {
-  authenticate(password: String!, hash: String!): Boolean
+  authenticate(userid: String!, password: String!): Boolean
+}
+
+type Mutation {
+  createAuthentication(userid: String!, hash: String!): Boolean
+  updateAuthentication(userid: String!, password: String!): Boolean
 }
