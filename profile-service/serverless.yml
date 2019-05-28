@@ -4,6 +4,7 @@ provider:
   name: aws
   runtime: nodejs8.10
   region: us-east-1
+  stage: dev
 
 plugins:
   - serverless-offline
@@ -23,9 +24,9 @@ functions:
     events:
       - http:
           cors: true
-          path: '/'
+          path: 'graphql'
           method: any
       - http:
           cors: true
-          path: '{proxy+}'
+          path: 'graphql'
           method: any

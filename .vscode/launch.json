@@ -17,10 +17,13 @@
       "name": "Auth Service",
       "program": "${workspaceFolder}/auth-service/src/main.ts",
       "outFiles": ["${workspaceFolder}/auth-service/dist/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Profile Service",
+      "program": "${workspaceFolder}/profile-service/src/main.ts",
+      "outFiles": ["${workspaceFolder}/profile-service/dist/**/*.js"]
     }
   ]
 }
-''
-
-;.'
-'''
