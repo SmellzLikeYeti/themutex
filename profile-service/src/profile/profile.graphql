@@ -1,0 +1,25 @@
+type Profile {
+  fname: String!
+  lname: String!
+  occupation: String
+  company: String
+}
+
+type Query {
+  profile(userid: String!): Profile
+}
+
+type Mutation {
+  createProfile(
+    userid: String!
+    fname: String!
+    lname: String!
+    occupation: String
+    company: String
+  ): Boolean
+
+  updateFName(userid: String!, fname: String!): Boolean
+  updateLName(userid: String!, lname: String!): Boolean
+  updateOccupation(userid: String!, occupation: String!): Boolean
+  updateCompany(userid: String!, company: String!): Boolean
+}
