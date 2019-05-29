@@ -1,0 +1,11 @@
+type Rating {
+  rating: Float!
+}
+
+type Query {
+  rating(userid: String!): Rating
+}
+
+type Mutation {
+  calculateRating(userid: String!, ratingTransmutation: Float!): Boolean
+}
