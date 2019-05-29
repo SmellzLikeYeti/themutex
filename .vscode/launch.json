@@ -31,6 +31,13 @@
       "name": "Rating Service",
       "program": "${workspaceFolder}/rating-service/src/main.ts",
       "outFiles": ["${workspaceFolder}/rating-service/dist/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Topic Service",
+      "program": "${workspaceFolder}/topic-service/src/main.ts",
+      "outFiles": ["${workspaceFolder}/topic-service/dist/**/*.js"]
     }
   ]
 }
