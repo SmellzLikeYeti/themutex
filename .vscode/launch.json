@@ -24,6 +24,13 @@
       "name": "Profile Service",
       "program": "${workspaceFolder}/profile-service/src/main.ts",
       "outFiles": ["${workspaceFolder}/profile-service/dist/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Rating Service",
+      "program": "${workspaceFolder}/rating-service/src/main.ts",
+      "outFiles": ["${workspaceFolder}/rating-service/dist/**/*.js"]
     }
   ]
 }
