@@ -8,9 +8,9 @@
 export abstract class IMutation {
     abstract createPost(topicid: string, content: string, userid: string): boolean | Promise<boolean>;
 
-    abstract editPost(postid: string, topicid: string, userid: string, content: string): boolean | Promise<boolean>;
+    abstract editPost(postid: string, topicid: string, content: string): boolean | Promise<boolean>;
 
-    abstract deletePost(postid: string, topicid: string, userid: string): boolean | Promise<boolean>;
+    abstract deletePost(postid: string, topicid: string): boolean | Promise<boolean>;
 }
 
 export class Post {

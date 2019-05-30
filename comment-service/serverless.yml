@@ -1,0 +1,32 @@
+service: comment-service
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-east-1
+  stage: dev
+
+plugins:
+  - serverless-offline
+  - serverless-dynamodb-local
+
+package:
+  exclude:
+    - .git/**
+    - src/**
+    - test/**
+    - nodemon.json
+    - README.md
+
+functions:
+  index:
+    handler: dist/lambda.handler
+    events:
+      - http:
+          cors: true
+          path: 'graphql'
+          method: any
+      - http:
+          cors: true
+          path: 'graphql'
+          method: any

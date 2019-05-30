@@ -15,12 +15,7 @@ type Query {
 type Mutation {
   createPost(topicid: String!, content: String!, userid: String!): Boolean
 
-  editPost(
-    postid: String!
-    topicid: String!
-    userid: String!
-    content: String!
-  ): Boolean
+  editPost(postid: String!, topicid: String!, content: String!): Boolean
 
-  deletePost(postid: String!, topicid: String!, userid: String!): Boolean
+  deletePost(postid: String!, topicid: String!): Boolean
 }

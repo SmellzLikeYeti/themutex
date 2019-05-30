@@ -45,6 +45,13 @@
       "name": "Post Service",
       "program": "${workspaceFolder}/post-service/src/main.ts",
       "outFiles": ["${workspaceFolder}/post-service/dist/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Comment Service",
+      "program": "${workspaceFolder}/comment-service/src/main.ts",
+      "outFiles": ["${workspaceFolder}/comment-service/dist/**/*.js"]
     }
   ]
 }

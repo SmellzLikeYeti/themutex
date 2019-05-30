@@ -34,18 +34,16 @@ export class PostResolver {
   async editPost(
     @Args('postid') postid: string,
     @Args('topicid') topicid: string,
-    @Args('userid') userid: string,
     @Args('content') content: string,
   ): Promise<boolean> {
-    return await this.postService.editPost(postid, topicid, userid, content);
+    return await this.postService.editPost(postid, topicid, content);
   }
 
   @Mutation('deletePost')
   async deletePost(
     @Args('postid') postid: string,
     @Args('topicid') topicid: string,
-    @Args('userid') userid: string,
   ): Promise<boolean> {
-    return await this.postService.deletePost(postid, topicid, userid);
+    return await this.postService.deletePost(postid, topicid);
   }
 }
