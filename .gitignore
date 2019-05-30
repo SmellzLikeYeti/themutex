@@ -4,10 +4,12 @@ auth-service/package-lock.json
 profile-service/package-lock.json
 rating-service/package-lock.json
 topic-service/package-lock.json
+post-service/package-lock.json
 .serverless/
 auth-service/dist/
 user-service/dist/
 profile-service/dist/
 rating-service/dist/
 topic-service/dist/
+post-service/dist/
 .dynamodb
