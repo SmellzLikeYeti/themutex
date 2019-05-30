@@ -132,12 +132,7 @@ export class PostService {
     });
   }
 
-  editPost(
-    postid: string,
-    topicid: string,
-    userid: string,
-    content: string,
-  ): Promise<boolean> {
+  editPost(postid: string, topicid: string, content: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
       const params = {
         TableName: 'post',
@@ -161,11 +156,7 @@ export class PostService {
     });
   }
 
-  deletePost(
-    postid: string,
-    topicid: string,
-    userid: string,
-  ): Promise<boolean> {
+  deletePost(postid: string, topicid: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
       const params = {
         TableName: 'post',

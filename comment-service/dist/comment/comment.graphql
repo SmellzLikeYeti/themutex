@@ -1,0 +1,19 @@
+type Comment {
+  commentid: String!
+  postid: String!
+  userid: String!
+  content: String!
+  createdWhen: String!
+}
+
+type Query {
+  getPostComments(postid: String!): [Comment]
+  getUserComments(userid: String!): [Comment]
+}
+
+type Mutation {
+  createComment(postid: String!, userid: String!, content: String!): Boolean
+
+  editComment(commentid: String!, userid: String!, content: String!): Boolean
+  deleteComment(commentid: String!, userid: String!): Boolean
+}
