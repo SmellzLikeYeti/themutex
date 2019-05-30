@@ -38,6 +38,13 @@
       "name": "Topic Service",
       "program": "${workspaceFolder}/topic-service/src/main.ts",
       "outFiles": ["${workspaceFolder}/topic-service/dist/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Post Service",
+      "program": "${workspaceFolder}/post-service/src/main.ts",
+      "outFiles": ["${workspaceFolder}/post-service/dist/**/*.js"]
     }
   ]
 }

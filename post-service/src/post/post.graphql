@@ -1,0 +1,26 @@
+type Post {
+  postid: String!
+  topicid: String!
+  content: String!
+  userid: String!
+  createdWhen: String!
+}
+
+type Query {
+  post(postid: String!): Post
+  userPosts(userid: String!): [Post]
+  topicPosts(topicid: String!): [Post]
+}
+
+type Mutation {
+  createPost(topicid: String!, content: String!, userid: String!): Boolean
+
+  editPost(
+    postid: String!
+    topicid: String!
+    userid: String!
+    content: String!
+  ): Boolean
+
+  deletePost(postid: String!, topicid: String!, userid: String!): Boolean
+}
